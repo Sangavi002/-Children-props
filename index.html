@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic List Rendering</title>
+</head>
+<style>
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(3,150px);
+        gap: 90px;
+        justify-content: center;
+        padding: 10px;
+    }
+    .gallery img {
+        width: 100%;
+        height: 200px;
+        display: block;
+    }
+    h1{
+        text-align: center;
+    }
+</style>
+<body>
+  <div id="root"></div>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    function Gallery({children}){
+        return(
+            <>
+                <h1>Fruits</h1>
+                <div className="gallery">
+                    {children}
+                </div>
+            </>
+        )
+    }
+
+    function Image({ src }) {
+        return <img src={src} alt="" />;
+      }
+    
+    const App = () => {
+        return(
+            <Gallery>
+                <Image src="apple.jpeg" />
+                <Image src="mango.jpeg"/>
+                <Image src="banana.jpeg" />
+                <Image src="grape.jpeg" />
+                <Image src="guava.jpeg" />
+                <Image src="kiwi.jpeg" />
+                <Image src="papaya.jpeg" />
+                <Image src="strawberry.jpeg"  />
+            </Gallery>
+        )
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+  </script>
+</body>
+</html>
